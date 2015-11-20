@@ -52,7 +52,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'es',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -123,6 +123,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 	    'Barryvdh\DomPDF\ServiceProvider',
+
+	    'Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider',
 	),
 
 	/*

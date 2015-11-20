@@ -489,6 +489,9 @@ create table tutorias(
 	periodo_evaluacion varchar(50) not null,
 	num_alumnos integer(10) not null,
 	fecha varchar(30) not null,
+	numero_alumno_asesoria integer (10),
+	numero_alumno_orientacion integer (10),
+	numero_alumnos_aprobados integer (10),
 	observaciones varchar(100),
 	FOREIGN KEY (ciclo_id) REFERENCES ciclos(id),
 	FOREIGN KEY (grupo_id) REFERENCES grupos(id),
@@ -500,12 +503,18 @@ create table tutoria_detalle(
 	tutoria_id integer(10) unsigned not null,
 	materia_id integer(10) unsigned not null,
 	maestro_id integer(10) unsigned not null,
-	alumnos_reprovados integer(10) not null,
+	alumnos_reprobados integer(10) not null,
 	porcentaje_reprobados integer(10) not null,
 	calificacion_5 integer(10) not null,
 	calificacion_6 integer(10) not null,
-	FOREIGN KEY (tutoria_id) REFERENCES tutorias(id),
-	FOREIGN KEY (materia_id) REFERENCES materias(id),
+	FOREIGN KEY (tutoria_id) REFERENCES tutorias(id)
+		ON DELETE CASCADE
+       	ON UPDATE CASCADE,
+	FOREIGN KEY (materia_id) REFERENCES materias(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
 	FOREIGN KEY (maestro_id) REFERENCES maestros(id)
+		ON DELETE CASCADE
+       	ON UPDATE CASCADE
 );
 

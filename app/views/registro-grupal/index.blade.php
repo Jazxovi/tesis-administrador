@@ -21,6 +21,7 @@
 			<thead>
 				<tr>
 					<th>Grupo</th>
+					<th>Parcial</th>
 					<th>Agregar maeteria</th>
 					<th>Editar</th>
 					<th class="text-center">PDF</th>
@@ -31,18 +32,19 @@
 				@foreach ($tutoria as $d)
 				<tr>
 					<td>{{$d->grupo}}</td>
+					<td>{{ $d->periodo_evaluacion }}</td>
 					<td>
 						<a href="{{ route('detalle.create', [$d->id, $d->grupo_id]) }}" class="btn btn-success btn-sm">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
 					</td>
 					<td>
-						<a href="" class="btn btn-warning btn-sm btn-esp">
+						<a href="{{ route('registro.show', $d->id) }}" class="btn btn-warning btn-sm btn-esp">
 							<span class="glyphicon glyphicon-edit"></span>
 						</a>
 					</td>
 					<td class="text-center">
-						<a href="{{ route('registro.show', [$d->id]) }}" class="btn btn-primary btn-sm btn-esp">
+						<a href="{{ route('registro-detalle.show', [$d->id]) }}" class="btn btn-primary btn-sm btn-esp">
 							<span class="glyphicon glyphicon-eye-open"></span>
 						</a>
 						<a href="{{ route('registro.pdf', $d->id) }}" class="btn btn-primary btn-sm">

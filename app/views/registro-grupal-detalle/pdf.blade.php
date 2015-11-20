@@ -51,7 +51,6 @@
 		<div class="col-md-12">CENTRO DE BACHILLERATO TECNOLOGICO INDUSTRIAL Y DE SERVICIOS No.251</div>
 		<div class="col-md-12">DEPARTAMENTO DE SERVICIOS DOCENTES</div>
 		<div class="col-md-12">TRABAJO DE TUTORIAS</div>
-		<div class="col-md-12"> </div>
 		<div class="col-md-12"> Indicaciones: La información recabada en este formato es importante para llevar el seguimiento de dicho programa.</div>
 	<br>
 	</div>
@@ -60,25 +59,27 @@
 			<div class="col-md-12">
 				<table class="table table-bordered">
 					<thead>
+					@foreach($data as $d )
 						<tr>
 							<th class="border">
-								<p>Semestre:</p>
+								<p>Semestre: {{ $d->semestre }} </p>
 								<p></p>
-								<p>Grupo:</p>
+								<p>Grupo: {{ $d->grupo }}</p>
 							</th>
 							
 							<th class="border">
-								<p>Periado de evaluación: </p>
+								<p>Periodo de evaluación: {{ $d->periodo_evaluacion }} </p>
 							</th>
 
 							<th class="border">
-								<p>No. de Alumnos: </p>
+								<p>No. de Alumnos: {{ $d->num_alumnos }} </p>
 							</th>
 
 							<th class="border">
-								<p>Fecha: </p>
+								<p>Fecha: {{ $d->fecha }} </p>
 							</th>
 						</tr>
+					@endforeach
 					</thead>
 				</table>
 				<br>
@@ -99,40 +100,19 @@
 						</tr>
 					</thead>
 					<tbody>
+					@foreach($detalle as $d)
 						<tr>
 							<td class="border">
-								<p> Calculo integral</p>
+								<p>{{ $d->materia }}</p>
 							</td>
 							<td class="border">
-								<p>20</p>
+								<p>{{ $d->alumnos_reprobados }}</p>
 							</td>
 							<td class="border">
-								<p>40%</p>
+								<p>{{ $d->porcentaje_reprobados }}%</p>
 							</td>
 						</tr>
-
-						<tr>
-							<td class="border">
-								<p>Ingles V</p>
-							</td>
-							<td class="border">
-								<p>1</p>
-							</td>
-							<td class="border">
-								<p>2%</p>
-							</td>
-						</tr>
-						<tr>
-							<td class="border">
-								<p>Fisica</p>
-							</td>
-							<td class="border">
-								<p>1</p>
-							</td>
-							<td class="border">
-								<p>2%</p>
-							</td>
-						</tr>
+					@endforeach
 					</tbody>
 				</table>
 				<br>
@@ -140,7 +120,6 @@
 				<p class="text-center"><strong>ASESORIAS</strong></p>
 				<br>
 				<table class="table table-bordered">
-					
 					<thead>
 						<tr>
 							<th class="border">
@@ -148,7 +127,11 @@
 							</th>
 							
 							<th class="border">
-								<p> No. DE ALUMNOS CON ASESORIA</p>
+								<p> No. DE ALUMNOS CON ASESORIA 5</p>
+							</th>
+
+							<th class="border">
+								<p> No. DE ALUMNOS CON ASESORIA 6</p>
 							</th>
 
 							<th class="border">
@@ -157,51 +140,37 @@
 						</tr>
 					</thead>
 					<tbody>
+					@foreach($detalle as $d)
 						<tr>
 							<td class="border">
-								<p> Calculo integral</p>
+								<p> {{ $d->materia }}</p>
 							</td>
 							<td class="border">
-								<p>20</p>
+								<p>{{ $d->calificacion_5 }}</p>
 							</td>
 							<td class="border">
-								<p>40%</p>
+								<p>{{ $d->calificacion_6 }}</p>
+							</td>
+							<td class="border">
+								<p>{{ $d->nombres }}</p>
 							</td>
 						</tr>
-
-						<tr>
-							<td class="border">
-								<p>Ingles V</p>
-							</td>
-							<td class="border">
-								<p>1</p>
-							</td>
-							<td class="border">
-								<p>2%</p>
-							</td>
-						</tr>
-						<tr>
-							<td class="border">
-								<p>Fisica</p>
-							</td>
-							<td class="border">
-								<p>1</p>
-							</td>
-							<td class="border">
-								<p>2%</p>
-							</td>
-						</tr>
+					@endforeach
 					</tbody>
 				</table>
 				<br>
-				<p>Numero de alumnos que tienen asesorias: </p>
-				<p>Numero de Alumnos canalizados a Orientación Educativa:</p>
-				<p>Numero de Alumnos que no requirieron atención del tutor:</p>
+				@foreach($data as $d )
+				<p>Numero de alumnos que tienen asesorias: {{ $d-> numero_alumno_asesoria }}</p>
+				<p>Numero de Alumnos canalizados a Orientación Educativa: {{ $d->numero_alumno_orientacion }}</p>
+				<p>Numero de Alumnos que no requirieron atención del tutor: {{ $d->numero_alumnos_aprobados }}</p>
+				@endforeach
 				<br>
 				<p><strong>OBSERVACIONES</strong></p>
 				<p>EN LA ENTREGA DE BOLETAS SE PLATICO CON LOS PADRES Y SE LES INFORMO QUE SE CANALIZARIA A ASESORIAS A LOS ALUMNOS REPROBADOS Y CON RIESGO A REPROBACION, DANDO SEGUIMIENTO A TRAVES DEL PROGRAMA YO NO ABANDONO.</p>
 				<br>
-				<p><strong>Nombre y Firma del Tutor:______________________________________________________</strong></p>
+				@foreach($data as $d )
+				<p><strong>Nombre y Firma del Tutor: <ins>{{ $d->nombres }}</ins></strong></p>
+				@endforeach
 			</div>
 		</div>
 </body>
